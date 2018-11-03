@@ -1,0 +1,35 @@
+
+.invImg {
+
+    display: none;
+}
+
+#msgBox {
+
+    width: 395px;
+    height: 195px;
+    float: left;
+    border: 10px solid #0c3f21;
+    background-color: #000000;
+    padding: 5px;
+    color: rgb(129, 129, 129);
+    font-style: bold;
+}
+
+#gameWindow {
+
+    float: left;
+    border: 10px solid #1a8346;
+    
+}
+
+#map {
+    position: relative;
+    border: 10px solid #0c3f21;
+    background-color: black;
+    padding: 5px;
+    float: left;
+    width: 197px;
+    height: 195px;
+    color: rgb(129, 129, 129);
+}

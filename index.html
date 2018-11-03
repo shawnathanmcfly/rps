@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="style.css" media="screen" />
+    
+</head>
+
+<body>
+    <!-- Pre load images for stupid game -->
+    <img id="rock" class="invImg" src="rock.jpg">
+    <img id="paper" class="invImg" src="paper.jpg">
+    <img id="cut" class="invImg" src="cut.jpg">
+    
+    <div>
+        <canvas id="gameWindow" width="800" height="400"></canvas>
+    </div><br>
+    <div>
+        <button onclick="pick(0)" type="button">Rock</button>
+        <button onclick="pick(1)" type="button">Paper</button>
+        <button onclick="pick(2)" type="button">Scissors</button>
+    </div>
+    <script src="source.js"></script>
+</body>
+
+</html>
