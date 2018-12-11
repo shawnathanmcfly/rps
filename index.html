@@ -1,7 +1,23 @@
 <!DOCTYPE html>
 <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css" media="screen" />
-    
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBhpC6HE2nmVAKLe6qCmnF0Nw9wp9QBzoo",
+        databaseURL: "https://trps-dc12e.firebaseio.com",
+        projectId: "trps-dc12e",
+        messagingSenderId: "192967954518"
+    };
+    firebase.initializeApp(config);
+</script>
 </head>
 
 <body>
@@ -10,14 +26,33 @@
     <img id="paper" class="invImg" src="paper.jpg">
     <img id="cut" class="invImg" src="cut.jpg">
     
-    <div>
-        <canvas id="gameWindow" width="800" height="400"></canvas>
-    </div><br>
-    <div>
-        <button onclick="pick(0)" type="button">Rock</button>
-        <button onclick="pick(1)" type="button">Paper</button>
-        <button onclick="pick(2)" type="button">Scissors</button>
+    <div class="container">
+        <div class="row">
+            
+            <canvas class="col-12" id="game-window" width="300" height="400"></canvas>
+            
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button onclick="pick(0)" type="button">Rock</button>
+                <button onclick="pick(1)" type="button">Paper</button>
+                <button onclick="pick(2)" type="button">Scissors</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12" id="msg-window">
+                    Welcome To Rock Paper Scissors Deluxe Online!
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 input-group">
+                <textarea class="form-control" id="chat-window"></textarea>
+                <span id="send-msg" class="input-group-addon btn">SEND</span>
+            </div>
+            
+        </div>
     </div>
+    
     <script src="source.js"></script>
 </body>
 
