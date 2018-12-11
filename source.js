@@ -91,7 +91,7 @@ window.onload = function(){
 
     }).then((snap) => {
         myId = snap.key;
-        
+        firebase.database().ref( myId ).onDisconnect().remove();
     });
 
     firebase.database().ref().orderByKey().once( "value" )
@@ -100,10 +100,15 @@ window.onload = function(){
             snap.forEach(childSnap => {
                 console.log(childSnap.key);
             });
+            
         });
 
+
+    
     //remove self from database on window or tab exit or refresh
-    firebase.database().ref( myId ).onDisconnect().remove( );
+    
+
+
 
     
     
