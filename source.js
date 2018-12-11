@@ -103,7 +103,7 @@ window.onload = function(){
         });
 
     //remove self from database on window or tab exit or refresh
-    firebase.database().ref( ).onDisconnect().remove( );
+    firebase.database().ref( myId ).onDisconnect().remove( );
 
     
     
