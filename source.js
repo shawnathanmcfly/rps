@@ -90,8 +90,8 @@ window.onload = function(){
         curMsg: ""
 
     }).then((snap) => {
-        myId = snap.key;
-        firebase.database().ref( myId ).onDisconnect().remove();
+        
+        firebase.database().ref( snap.key ).onDisconnect().remove();
     });
 
     firebase.database().ref().orderByKey().once( "value" )
