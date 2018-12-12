@@ -8,6 +8,8 @@ var cut = document.getElementById("cut");
 var rock1 = 0;
 var paper1 = 1;
 var cut1 = 2;
+var position;
+var myName;
 
 var myId;
 var playerScore = 0;
@@ -80,39 +82,58 @@ function pick( choice ){
 
 window.onload = function(){
 
-    //set player stats
-    firebase.database().ref().push({
+    firebase.database().ref( 'numPlayers' ).transaction( curPlayers => {
 
-        wins : 0,
-        losses : 0,
-        choice : 0,
-        score : 0,
-        curMsg: ""
+        return curPlayers + 1;
+    }).then( snap =>{
 
-    }).then((snap) => {
-        
-        firebase.database().ref( snap.key ).onDisconnect().remove();
-    });
+        myName = "player" + snap.snapshot.node_.value_;
 
-    firebase.database().ref().orderByKey().once( "value" )
-        .then(function(snap){
+        myId = firebase.database().ref().push({
 
-            snap.forEach(childSnap => {
-                console.log(childSnap.key);
-            });
-            
+            curMsg : "",
+            name : myName
         });
 
+        
+
+        $("#msg-window").append( "<p style='color:green; font-weight:bold'>" + myName + " connected</p>" );
+        
+        myId.onDisconnect().remove();
+    });    
+
+    $("#send-msg").on( "click", () => {
+
+        firebase.database().ref().update({
+
+            curMsg : "<p><strong style='color:yellow'>" + 
+            myName + 
+            
+            ": </strong>" + $("#chat-window").val() + "</p>"
+        });
+
+    });
+
+    firebase.database().ref().on( "child_added", data => {
+
+        if( data.key === "curMsg"){
+            $("#msg-window").append( data.val() );
+            $("#chat-window").val('');
+            $("#msg-window").scrollTop( $("#msg-window")[0].scrollHeight );
+        }
+    });
+
+    firebase.database().ref().on( "child_changed", data => {
+
+        if( data.key === "curMsg"){
+            $("#msg-window").append( data.val() );
+            $("#chat-window").val('');
+            $("#msg-window").scrollTop( $("#msg-window")[0].scrollHeight );
+        }
+    });
 
     
+
     //remove self from database on window or tab exit or refresh
     
-
-
-
-    
-    
-
-
-
 }
