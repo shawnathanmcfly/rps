@@ -91,9 +91,9 @@ function results( choice, opp ){
         myChoice = 0;
         myId.child('choice').set( 0 );
 
-        setInterval( () => {
+        setTimeout( () => {
             ctx.clearRect( c.width / 2, 0, 200, c.height );
-        }, 3000 );
+        }, 2000 );
 
         ctx.fillText("PLAYER: " + playerScore ,10,70);
         ctx.fillText("JERK: " + oppScore ,10,90);
@@ -158,8 +158,6 @@ window.onload = function(){
 
                     results( data.val(), oppChoice );
 
-                    
-
                 }
             });
         }
@@ -181,11 +179,5 @@ window.onload = function(){
             $("#msg-window").scrollTop( $("#msg-window")[0].scrollHeight );
         }
     });
-
-    
-
-    
-
-    
 
 }
